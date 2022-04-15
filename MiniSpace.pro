@@ -4,6 +4,17 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
 
+win32 {
+    win32-msvc* {
+        LIBS     += opengl32.lib glu32.lib
+    } else {
+        LIBS     += -lopengl32 -lglu32
+    }
+}
+else {
+        LIBS     += -lGL -lGLU
+}
+
 TARGET = MiniSpace
 TEMPLATE = app
 
