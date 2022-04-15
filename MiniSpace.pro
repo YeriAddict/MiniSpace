@@ -8,10 +8,12 @@ TARGET = MiniSpace
 TEMPLATE = app
 
 SOURCES += \
+    asteroid.cpp \
     main.cpp \
     webcam.cpp
 
 HEADERS += \
+    asteroid.h \
     webcam.h
 
 FORMS += \
@@ -26,4 +28,5 @@ LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_imgcodecs455 \
     -lopencv_videoio455 \
     -lopencv_features2d455 \
-    -lopencv_calib3d455
+    -lopencv_calib3d455 \
+    -lopencv_objdetect455
