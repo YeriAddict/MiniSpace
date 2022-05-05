@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui opengl widgets openglwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,10 +21,12 @@ TEMPLATE = app
 SOURCES += \
     asteroid.cpp \
     main.cpp \
+    spacewidget.cpp \
     webcam.cpp
 
 HEADERS += \
     asteroid.h \
+    spacewidget.h \
     webcam.h
 
 FORMS += \
