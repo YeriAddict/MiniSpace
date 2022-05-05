@@ -5,7 +5,6 @@
 #include <QWidget>
 #include <QString>
 #include <QTimer>
-using namespace cv;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Webcam; }
@@ -21,7 +20,7 @@ public:
 
 private:
     Ui::Webcam *ui;
-    VideoCapture * webCam_;
+    cv::VideoCapture * webCam_;
 
 private slots:
     void updateFrame();
