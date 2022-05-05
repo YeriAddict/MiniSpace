@@ -1,12 +1,17 @@
-#ifndef ASTEROID_H
-#define ASTEROID_H
+#include <qopengl.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <QColor>
 
-class Asteroid
-{
+class Asteroid{
+
 public:
     Asteroid();
-
     ~Asteroid();
-};
 
-#endif // ASTEROID_H
+    void display() const;
+
+private:
+    GLUquadric * quadric{nullptr};
+
+};
