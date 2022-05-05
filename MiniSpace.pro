@@ -1,8 +1,8 @@
 QT       += core gui opengl widgets openglwidgets
+TEMPLATE = app
+CONFIG += c++17
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-CONFIG += c++11
 
 win32 {
     win32-msvc* {
@@ -16,7 +16,6 @@ else {
 }
 
 TARGET = MiniSpace
-TEMPLATE = app
 
 SOURCES += \
     asteroid.cpp \
