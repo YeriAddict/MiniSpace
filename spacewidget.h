@@ -6,7 +6,7 @@
 #include <QTimer>
 #include "asteroid.h"
 
-class SpaceWidget : QOpenGLWidget
+class SpaceWidget : public QOpenGLWidget
 {
 public:
     SpaceWidget(QWidget* parent = nullptr);
