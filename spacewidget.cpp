@@ -45,6 +45,8 @@ void SpaceWidget::paintGL(){
     glLoadIdentity();
     gluLookAt(0.0f, 4.f, 4.f, 0.0f, 0.0f, 0.f, 0.0f, 1.0f, 0.0f);
 
+    glEnable(GL_TEXTURE_2D);
+
     glPushMatrix();
     asteroid->display();
     glPopMatrix();
