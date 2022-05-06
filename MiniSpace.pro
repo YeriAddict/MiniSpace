@@ -31,6 +31,9 @@ HEADERS += \
 FORMS += \
     webcam.ui
 
+RESOURCES += \
+    Resources/textures.qrc
+
 INCLUDEPATH +=$$(OPENCV_DIR)\..\..\include
 
 LIBS += -L$$(OPENCV_DIR)\lib \
