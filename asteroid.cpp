@@ -19,9 +19,15 @@ void Asteroid::addTexture() const{
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 }
 
-void Asteroid::display() const{
+void Asteroid::drawAsteroid() const{
+    glEnable(GL_TEXTURE_2D);
     addTexture();
     glBindTexture(GL_TEXTURE_2D,textures[0]);
     gluQuadricTexture(quadric, GLU_TRUE);
     gluSphere(quadric, 3.,20,20);
+    glDisable(GL_TEXTURE_2D);
+}
+
+void Asteroid::display() const{
+    drawAsteroid();
 }

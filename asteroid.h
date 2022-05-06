@@ -10,6 +10,7 @@ public:
     ~Asteroid();
 
     void addTexture() const;
+    void drawAsteroid() const;
     void display() const;
 
 private:
