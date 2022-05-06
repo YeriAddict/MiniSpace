@@ -9,12 +9,40 @@ Starship::~Starship(){
         gluDeleteQuadric(quadric);
 }
 
+void Starship::addTexture() const{
+    QImage asteroidTexture = QImage(":/reactor_texture.jpg");
+    QImage textAsteroidTexture = asteroidTexture.convertToFormat(QImage::Format_RGBA8888);
+    glGenTextures(1, textures);
+    glBindTexture(GL_TEXTURE_2D, textures[0]);
+    glTexImage2D(GL_TEXTURE_2D,0,4,textAsteroidTexture.width(),textAsteroidTexture.height(),0,GL_RGBA,GL_UNSIGNED_BYTE,textAsteroidTexture.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+}
+
+void Starship::drawBody() const{
+
+}
+
+void Starship::drawSides() const{
+
+}
+
 void Starship::display() const{
     // Body
     glColor3ub(0, 29, 110);
     gluQuadricDrawStyle(quadric, GLU_FILL);
-//    glRotated(180, 0, 1, 0);
-    gluCylinder(quadric,2.,2.,14.,10,10);
+    glPushMatrix();
+    gluCylinder(quadric,2.,2.,14.,20,20);
+        // Top
+    glTranslatef(0.0f, 0.0f, 14.0f);
+    gluDisk(quadric, 0.0, 2.0, 30, 2);
+        // Bottom
+    glTranslatef(0.0f, 0.0f, -14.0f);
+    gluDisk(quadric, 0.0, 2.0, 30, 1);
+        // Reactor
+    gluDisk(quadric, 0.0, 1.5, 30, 1);
+
+    glPopMatrix();
 
     // Triangles
     glBegin(GL_TRIANGLES);
