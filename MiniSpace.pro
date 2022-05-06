@@ -21,11 +21,13 @@ SOURCES += \
     asteroid.cpp \
     main.cpp \
     spacewidget.cpp \
+    starship.cpp \
     webcam.cpp
 
 HEADERS += \
     asteroid.h \
     spacewidget.h \
+    starship.h \
     webcam.h
 
 FORMS += \
