@@ -1,7 +1,7 @@
 #include <qopengl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include <QColor>
+#include <QImage>
 
 class Asteroid{
 
@@ -9,9 +9,11 @@ public:
     Asteroid();
     ~Asteroid();
 
+    void addTexture() const;
     void display() const;
 
 private:
     GLUquadric * quadric{nullptr};
+    GLuint* textures = new GLuint[1];
 
 };
