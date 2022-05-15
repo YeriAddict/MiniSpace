@@ -12,23 +12,29 @@ Starship::~Starship(){
 void Starship::drawBody() const{
     glColor3ub(0, 29, 110);
     gluQuadricDrawStyle(quadric, GLU_FILL);
+
     glPushMatrix();
-
     gluCylinder(quadric,2.,2.,14.,20,20);
+    glPopMatrix();
+}
 
-        // Top Disk
+void Starship::drawDisks() const{
+    glColor3ub(0, 29, 110);
+    gluQuadricDrawStyle(quadric, GLU_FILL);
+
+    glPushMatrix();
+    // Top Disk
     glTranslatef(0.0f, 0.0f, 14.0f);
     gluDisk(quadric, 0.0, 2.0, 30, 2);
 
-        // Bottom Disk
+    // Bottom Disk
     glTranslatef(0.0f, 0.0f, -14.0f);
     gluDisk(quadric, 1.5, 2.0, 30, 2);
 
-        // Reactor
+    // Reactor
     glColor3ub(253, 208, 23);
     gluQuadricTexture(quadric, GLU_TRUE);
     gluDisk(quadric, 0.0, 1.5, 30, 1);
-
     glPopMatrix();
 }
 
@@ -59,7 +65,19 @@ void Starship::drawSides() const{
     glEnd();
 }
 
+void Starship::drawHead() const{
+    glColor3ub(230, 0, 31);
+    gluQuadricDrawStyle(quadric, GLU_FILL);
+
+    glPushMatrix();
+    glTranslatef(0.0f, 0.0f, 14.0f);
+    gluCylinder(quadric,2.,0.,8.,20,20);
+    glPopMatrix();
+}
+
 void Starship::display() const{
     drawBody();
+    drawDisks();
     drawSides();
+    drawHead();
 }
