@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
         <file>asteroid_texture.jpg</file>
-        <file>reactor_texture.jpg</file>
     </qresource>
 </RCC>

@@ -15,7 +15,6 @@ public:
     void display() const;
     void drawBody() const;
     void drawSides() const;
-    void addTexture() const;
 
 private:
     GLUquadric * quadric{nullptr};
