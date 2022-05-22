@@ -9,17 +9,30 @@ Starship::~Starship(){
         gluDeleteQuadric(quadric);
 }
 
-void Starship::drawBody() const{
-    glColor3ub(0, 29, 110);
-    gluQuadricDrawStyle(quadric, GLU_FILL);
+void Starship::setMaterial(float R_ambient, float G_ambient, float B_ambient,
+                           float R_diffuse, float G_diffuse, float B_diffuse,
+                           float R_specular, float G_specular, float B_specular,
+                           float alpha) const{
+    GLfloat ambient_tab[] = { R_ambient/(1.f*255), G_ambient/(1.f*255), B_ambient/(1.f*255), alpha};
+    GLfloat diffuse_tab[] = { R_diffuse/(1.f*255), G_diffuse/(1.f*255), B_diffuse/(1.f*255), alpha};
+    GLfloat specular_tab[] = { R_specular/(1.f*255), G_specular/(1.f*255), B_specular/(1.f*255), alpha};
 
+    glMaterialfv(GL_FRONT,GL_AMBIENT,ambient_tab);
+    glMaterialfv(GL_FRONT,GL_DIFFUSE,diffuse_tab);
+    glMaterialfv(GL_FRONT,GL_SPECULAR,specular_tab);
+    glMaterialf(GL_FRONT,GL_SHININESS,20);
+}
+
+void Starship::drawBody() const{
+    setMaterial(0,5,110,0,5,110,255,255,255,50);
+    gluQuadricDrawStyle(quadric, GLU_FILL);
     glPushMatrix();
     gluCylinder(quadric,2.,2.,14.,20,20);
     glPopMatrix();
 }
 
 void Starship::drawDisks() const{
-    glColor3ub(0, 29, 110);
+    setMaterial(0,5,110,0,5,110,255,255,255,50);
     gluQuadricDrawStyle(quadric, GLU_FILL);
 
     glPushMatrix();
@@ -32,15 +45,14 @@ void Starship::drawDisks() const{
     gluDisk(quadric, 1.5, 2.0, 30, 2);
 
     // Reactor
-    glColor3ub(253, 208, 23);
-    gluQuadricTexture(quadric, GLU_TRUE);
+    setMaterial(255,189,46,255,189,46,255,255,255,50);
     gluDisk(quadric, 0.0, 1.5, 30, 1);
     glPopMatrix();
 }
 
 void Starship::drawSides() const{
+    setMaterial(230,0,31,230,0,31,255,255,255,50);
     glBegin(GL_TRIANGLES);
-    glColor3ub(230, 0, 31);
 
         // Right
     glVertex3f(2.f, 0.f, 0.f);
@@ -66,7 +78,7 @@ void Starship::drawSides() const{
 }
 
 void Starship::drawHead() const{
-    glColor3ub(230, 0, 31);
+    setMaterial(230,0,31,230,0,31,255,255,255,50);
     gluQuadricDrawStyle(quadric, GLU_FILL);
 
     glPushMatrix();
