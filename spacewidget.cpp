@@ -21,6 +21,19 @@ void SpaceWidget::initializeGL(){
     glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
     glEnable(GL_DEPTH_TEST);
 
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    GLfloat ambient_tab[] = { 0.19225f, 0.19225f, 0.19225f, 0.f};
+    GLfloat diffuse_tab[] = { 0.50754f, 0.50754f, 0.50754f, 0.f};
+    GLfloat specular_tab[] = { 0.508273f, 0.508273f, 0.508273f, 0.f};
+    GLfloat light_tab[] = { 0.f, 0.f, 10.f, 1.f };
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_tab);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse_tab);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specular_tab);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
+
     asteroid = new Asteroid();
     starship = new Starship();
 }
@@ -44,7 +57,7 @@ void SpaceWidget::paintGL(){
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0.0f, -1.0f, -3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+    gluLookAt(16.0f, 8.f, 3.f, 0.0f, 0.0f, 0.f, 0.0f, 1.0f, 0.0f);
 
     //glEnable(GL_TEXTURE_2D);
 
