@@ -12,7 +12,6 @@ public:
     Starship();
     ~Starship();
 
-    void display() const;
     void setMaterial(float R_ambient, float G_ambient, float B_ambient,
                      float R_diffuse, float G_diffuse, float B_diffuse,
                      float R_specular, float G_specular, float B_specular,
@@ -21,6 +20,7 @@ public:
     void drawDisks() const;
     void drawSides() const;
     void drawHead() const;
+    void display() const;
 
 private:
     GLUquadric * quadric{nullptr};
