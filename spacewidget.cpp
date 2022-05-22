@@ -36,6 +36,7 @@ void SpaceWidget::initializeGL(){
 
     asteroid = new Asteroid();
     starship = new Starship();
+    station = new Station();
 }
 
 void SpaceWidget::resizeGL(int width, int height){
@@ -57,12 +58,13 @@ void SpaceWidget::paintGL(){
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(16.f, 8.f, 3.f, 0.0f, 0.0f, 0.f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(-16.f, -8.f, -3.f, 0.0f, 0.0f, 0.f, 0.0f, 1.0f, 0.0f);
 
     //glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
     //asteroid->display();
-    starship->display();
+    //starship->display();
+    station->display();
     glPopMatrix();
 }

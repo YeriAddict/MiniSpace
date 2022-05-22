@@ -1,5 +1,6 @@
 #include "asteroid.h"
 #include "starship.h"
+#include "station.h"
 #include <QOpenGLWidget>
 #include <QKeyEvent>
 #include <QTimer>
@@ -19,6 +20,7 @@ protected:
 private:
     Asteroid* asteroid = nullptr;
     Starship* starship = nullptr;
+    Station* station = nullptr;
 
     float m_TimeElapsed { 0.0f };
     QTimer m_AnimationTimer;

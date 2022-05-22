@@ -22,12 +22,14 @@ SOURCES += \
     main.cpp \
     spacewidget.cpp \
     starship.cpp \
+    station.cpp \
     webcam.cpp
 
 HEADERS += \
     asteroid.h \
     spacewidget.h \
     starship.h \
+    station.h \
     webcam.h
 
 FORMS += \
