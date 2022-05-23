@@ -58,13 +58,33 @@ void SpaceWidget::paintGL(){
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(-16.f, -8.f, -3.f, 0.0f, 0.0f, 0.f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
 
     //glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
     //asteroid->display();
-    //starship->display();
-    station->display();
+    starship->display();
+    //station->display();
     glPopMatrix();
+}
+
+void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
+{
+    if(keyEvent->key() == Qt::Key_Q)
+    {
+        eyeX-=0.6;
+    }
+    if(keyEvent->key() == Qt::Key_D)
+    {
+        eyeX += 0.6;
+    }
+    if(keyEvent->key() == Qt::Key_S)
+    {
+        eyeZ -= 0.6;
+    }
+    if(keyEvent->key() == Qt::Key_Z)
+    {
+        eyeZ += 0.6;
+    }
 }
