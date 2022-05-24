@@ -1,12 +1,16 @@
 #include "spacewidget.h"
-#include <QApplication>
-#include <cmath>
-#include <algorithm>
 
 const unsigned int WINDOW_SIZE = 700;
 
 SpaceWidget::SpaceWidget(QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
+
+    for(int i = 0; i < 16; i++){
+        randX[i] = QRandomGenerator::global()->bounded(10,300);
+        randY[i] = QRandomGenerator::global()->bounded(10,300);
+        randZ[i] = QRandomGenerator::global()->bounded(10,300);
+        randRadius[i] = QRandomGenerator::global()->bounded(1,20);
+    }
 
     connect(&m_AnimationTimer,  &QTimer::timeout, [&]{
         m_TimeElapsed += 1.0f;
@@ -34,9 +38,6 @@ void SpaceWidget::initializeGL(){
     glLightfv(GL_LIGHT0, GL_SPECULAR, specular_tab);
     glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
 
-    asteroid = new Asteroid(0,0,0, 3);
-    asteroid2 = new Asteroid(10,10,10, 5);
-    asteroid3 = new Asteroid(-10,-10,-10, 8);
     starship = new Starship(20,20,20);
     station = new Station(30,30,30,6);
 }
@@ -54,7 +55,6 @@ void SpaceWidget::resizeGL(int width, int height){
     glLoadIdentity();
 }
 
-
 void SpaceWidget::paintGL(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -65,12 +65,7 @@ void SpaceWidget::paintGL(){
     //glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
-    asteroid->display();
-    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
-    asteroid2->display();
-    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
-    asteroid3->display();
-    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+    generateAsteroid();
     starship->display();
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     station->display();
@@ -94,5 +89,14 @@ void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
     if(keyEvent->key() == Qt::Key_Z)
     {
         eyeZ += 0.6;
+    }
+}
+
+void SpaceWidget::generateAsteroid(){
+
+    for(int i = 0; i < 16; i++){
+        Asteroid* asteroid = new Asteroid(randX[i],randY[i],randZ[i],randRadius[i]);
+        asteroid->display();
+        gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     }
 }

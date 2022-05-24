@@ -4,6 +4,10 @@
 #include <QOpenGLWidget>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QApplication>
+#include <cmath>
+#include <algorithm>
+#include <QRandomGenerator>
 
 class SpaceWidget : public QOpenGLWidget{
 public:
@@ -17,11 +21,9 @@ protected:
     void resizeGL(int width, int height);
     void paintGL();
     void keyPressEvent(QKeyEvent * keyEvent);
+    void generateAsteroid();
 
 private:
-    Asteroid* asteroid = nullptr;
-    Asteroid* asteroid2 = nullptr;
-    Asteroid* asteroid3 = nullptr;
     Starship* starship = nullptr;
     Station* station = nullptr;
 
@@ -37,4 +39,10 @@ private:
     GLdouble upX = 0.0;
     GLdouble upY = 1.0;
     GLdouble upZ = 0.0;
+
+    int randX[16];
+    int randY[16];
+    int randZ[16];
+    int randRadius[16];
+
 };
