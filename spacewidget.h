@@ -20,6 +20,8 @@ protected:
 
 private:
     Asteroid* asteroid = nullptr;
+    Asteroid* asteroid2 = nullptr;
+    Asteroid* asteroid3 = nullptr;
     Starship* starship = nullptr;
     Station* station = nullptr;
 

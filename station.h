@@ -9,7 +9,7 @@
 class Station{
 
 public:
-    Station();
+    Station(GLfloat x, GLfloat y, GLfloat z, GLdouble radius);
     ~Station();
 
     void addTexture() const;
@@ -24,6 +24,10 @@ public:
 private:
     GLUquadric * quadric{nullptr};
     GLuint* textures = new GLuint[1];
+    GLfloat x_;
+    GLfloat y_;
+    GLfloat z_;
+    GLdouble radius_;
 };
 
 #endif // STATION_H

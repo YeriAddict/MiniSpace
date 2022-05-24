@@ -1,7 +1,11 @@
 #include "station.h"
 
-Station::Station(){
+Station::Station(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
     quadric = gluNewQuadric();
+    x_ = x;
+    y_ = y;
+    z_ = z;
+    radius_ = radius;
 }
 
 Station::~Station(){
@@ -39,7 +43,7 @@ void Station::drawCenter() const{
     addTexture();
     glBindTexture(GL_TEXTURE_2D,textures[0]);
     gluQuadricTexture(quadric, GLU_TRUE);
-    gluSphere(quadric, 6.,20,20);
+    gluSphere(quadric, radius_,20,20);
     glDisable(GL_TEXTURE_2D);
 }
 
@@ -63,6 +67,7 @@ void Station::drawAntennas() const{
 }
 
 void Station::display() const{
+    glTranslatef(x_,y_,z_);
     drawCenter();
     drawAntennas();
 }

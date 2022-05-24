@@ -1,12 +1,30 @@
 #include "asteroid.h"
 
-Asteroid::Asteroid(){
+Asteroid::Asteroid(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
     quadric = gluNewQuadric();
+    x_ = x;
+    y_ = y;
+    z_ = z;
+    radius_ = radius;
 }
 
 Asteroid::~Asteroid(){
     if(quadric)
         gluDeleteQuadric(quadric);
+}
+
+void Asteroid::setMaterial(float R_ambient, float G_ambient, float B_ambient,
+                           float R_diffuse, float G_diffuse, float B_diffuse,
+                           float R_specular, float G_specular, float B_specular,
+                           float alpha) const{
+    GLfloat ambient_tab[] = { R_ambient/(1.f*255), G_ambient/(1.f*255), B_ambient/(1.f*255), alpha};
+    GLfloat diffuse_tab[] = { R_diffuse/(1.f*255), G_diffuse/(1.f*255), B_diffuse/(1.f*255), alpha};
+    GLfloat specular_tab[] = { R_specular/(1.f*255), G_specular/(1.f*255), B_specular/(1.f*255), alpha};
+
+    glMaterialfv(GL_FRONT,GL_AMBIENT,ambient_tab);
+    glMaterialfv(GL_FRONT,GL_DIFFUSE,diffuse_tab);
+    glMaterialfv(GL_FRONT,GL_SPECULAR,specular_tab);
+    glMaterialf(GL_FRONT,GL_SHININESS,20);
 }
 
 void Asteroid::addTexture() const{
@@ -24,10 +42,13 @@ void Asteroid::drawAsteroid() const{
     addTexture();
     glBindTexture(GL_TEXTURE_2D,textures[0]);
     gluQuadricTexture(quadric, GLU_TRUE);
-    gluSphere(quadric, 3.,20,20);
+    setMaterial(255,255,255,255,255,255,255,255,255,50);
+    gluSphere(quadric,radius_,20,20);
     glDisable(GL_TEXTURE_2D);
+    glLoadIdentity();
 }
 
 void Asteroid::display() const{
+    glTranslatef(x_,y_,z_);
     drawAsteroid();
 }

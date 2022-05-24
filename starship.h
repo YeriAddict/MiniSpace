@@ -9,7 +9,7 @@
 class Starship{
 
 public:
-    Starship();
+    Starship(GLfloat x, GLfloat y, GLfloat z);
     ~Starship();
 
     void setMaterial(float R_ambient, float G_ambient, float B_ambient,
@@ -25,6 +25,9 @@ public:
 private:
     GLUquadric * quadric{nullptr};
     GLuint* textures = new GLuint[1];
+    GLfloat x_;
+    GLfloat y_;
+    GLfloat z_;
 };
 
 #endif // STARSHIP_H

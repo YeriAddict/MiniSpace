@@ -34,9 +34,11 @@ void SpaceWidget::initializeGL(){
     glLightfv(GL_LIGHT0, GL_SPECULAR, specular_tab);
     glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
 
-    asteroid = new Asteroid();
-    starship = new Starship();
-    station = new Station();
+    asteroid = new Asteroid(0,0,0, 3);
+    asteroid2 = new Asteroid(10,10,10, 5);
+    asteroid3 = new Asteroid(-10,-10,-10, 8);
+    starship = new Starship(20,20,20);
+    station = new Station(30,30,30,6);
 }
 
 void SpaceWidget::resizeGL(int width, int height){
@@ -63,9 +65,15 @@ void SpaceWidget::paintGL(){
     //glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
-    //asteroid->display();
+    asteroid->display();
+    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+    asteroid2->display();
+    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+    asteroid3->display();
+    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     starship->display();
-    //station->display();
+    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+    station->display();
     glPopMatrix();
 }
 

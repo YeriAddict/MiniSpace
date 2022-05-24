@@ -1,7 +1,10 @@
 #include "starship.h"
 
-Starship::Starship(){
+Starship::Starship(GLfloat x, GLfloat y, GLfloat z){
     quadric = gluNewQuadric();
+    x_ = x;
+    y_ = y;
+    z_ = z;
 }
 
 Starship::~Starship(){
@@ -88,6 +91,7 @@ void Starship::drawHead() const{
 }
 
 void Starship::display() const{
+    glTranslatef(x_,y_,z_);
     drawBody();
     drawDisks();
     drawSides();
