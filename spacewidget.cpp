@@ -26,17 +26,23 @@ void SpaceWidget::initializeGL(){
     glEnable(GL_DEPTH_TEST);
 
     glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
 
+    glEnable(GL_LIGHT0);
     GLfloat ambient_tab[] = { 1.f, 1.f, 1.f, 1.f};
     GLfloat diffuse_tab[] = { 1.f, 1.f, 1.f, 1.f};
     GLfloat specular_tab[] = { 1.f, 1.f, 1.f, 1.f};
     GLfloat light_tab[] = { 0.f, 0.f, 1.f, 0.f };
-
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_tab);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse_tab);
     glLightfv(GL_LIGHT0, GL_SPECULAR, specular_tab);
     glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
+
+    glEnable(GL_LIGHT1);
+    GLfloat light_tab_station[] = {30.f,30.f,38.f,1.f};
+    GLfloat direction_tab_station[] = {0.0,1.0,0.0};
+    glLightfv(GL_LIGHT1,GL_POSITION,light_tab_station);
+    glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION,direction_tab_station);
+    glLightf(GL_LIGHT1,GL_SPOT_CUTOFF,5);
 
     starship = new Starship(20,20,20);
     station = new Station(30,30,30,6);
@@ -62,7 +68,17 @@ void SpaceWidget::paintGL(){
     glLoadIdentity();
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
 
-    //glEnable(GL_TEXTURE_2D);
+    GLfloat colorYellow[] = {1.f,1.f,0.f,1.f};
+
+    if ((uint64_t)m_TimeElapsed%100 <50){
+
+        glLightfv(GL_LIGHT1,GL_AMBIENT,colorYellow);
+        glLightfv(GL_LIGHT1,GL_DIFFUSE,colorYellow);
+        glLightfv(GL_LIGHT1,GL_SPECULAR,colorYellow);
+        }
+    else{
+        glDisable(GL_LIGHT1);
+    }
 
     glPushMatrix();
     generateAsteroid();
@@ -76,7 +92,7 @@ void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
 {
     if(keyEvent->key() == Qt::Key_Q)
     {
-        eyeX-=0.6;
+        eyeX -= 0.6;
     }
     if(keyEvent->key() == Qt::Key_D)
     {

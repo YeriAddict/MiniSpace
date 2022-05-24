@@ -53,7 +53,7 @@ void Station::drawCenter() const{
     glDisable(GL_TEXTURE_2D);
 }
 
-void Station::drawAntennas() const{
+void Station::drawAntennas(int time) const{
     gluQuadricDrawStyle(quadric, GLU_FILL);
 
     glPushMatrix();
@@ -65,7 +65,7 @@ void Station::drawAntennas() const{
     gluDisk(quadric, 0.0, 1.0, 30, 2);
 
     // Left Antenna
-    setMaterial(230,0,31,230,0,31,255,255,255,50);
+    setMaterial(0,5,110,0,5,110,255,255,255,50);
     glTranslatef(0.0f, 0.0f, -40.0f);
     gluCylinder(quadric,1.,1.,14.,20,20);
     gluDisk(quadric, 0.0, 1.0, 30, 2);
@@ -74,9 +74,14 @@ void Station::drawAntennas() const{
     glTranslatef(0.0f, 0.0f, 20.0f);
     glRotated(90,0,1,0);
     glTranslatef(0.0f,0.0f,6.0f);
-    setMaterial(255,189,46,255,189,46,255,255,255,50);
+    if(time%100<50){
+        setMaterial(255,189,46,255,189,46,255,255,255,50);
+    }
+    else{
+        setMaterial(0,0,0,0,0,0,0,0,0,50);
+    }
     gluDisk(quadric, 0.0, 4.0, 30, 2);
-    setMaterial(255,255,255,255,255,255,255,255,255,50);
+    setMaterial(230,0,31,230,0,31,255,255,255,50);
     gluCylinder(quadric,1.,1.,14.,20,20);
 
     // Back
@@ -93,10 +98,10 @@ void Station::drawAntennas() const{
 }
 
 void Station::display(float time) const{
-    int real_time = time;
-    float angle = real_time*(360/3.14)*3;
+    int realtime = time;
+    float angle = realtime*(360/3.14)*3;
     glTranslatef(x_,y_,z_);
     glRotated(angle,0.,0.,1.);
     drawCenter();
-    drawAntennas();
+    drawAntennas(time);
 }

@@ -18,7 +18,7 @@ public:
                      float R_specular, float G_specular, float B_specular,
                      float alpha) const;
     void drawCenter() const;
-    void drawAntennas() const;
+    void drawAntennas(int time) const;
     void display(float time) const;
 
 private:
