@@ -38,11 +38,22 @@ void SpaceWidget::initializeGL(){
     glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
 
     glEnable(GL_LIGHT1);
-    GLfloat light_tab_station[] = {30.f,30.f,38.f,1.f};
-    GLfloat direction_tab_station[] = {0.0,1.0,0.0};
+    GLfloat light_tab_station[] = { 30.f, 30.f, 30.f, 1.f};
+    GLfloat direction_tab_station[] = { 0.0, 0.0, 1.0};
+    GLfloat yellow_tab[] = {1.f,1.f,0.f,1.f};
     glLightfv(GL_LIGHT1,GL_POSITION,light_tab_station);
     glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION,direction_tab_station);
     glLightf(GL_LIGHT1,GL_SPOT_CUTOFF,5);
+
+    if ((uint64_t)m_TimeElapsed%100 <50){
+
+        glLightfv(GL_LIGHT1,GL_AMBIENT,yellow_tab);
+        glLightfv(GL_LIGHT1,GL_DIFFUSE,yellow_tab);
+        glLightfv(GL_LIGHT1,GL_SPECULAR,yellow_tab);
+        }
+    else{
+        glDisable(GL_LIGHT1);
+    }
 
     starship = new Starship(20,20,20);
     station = new Station(30,30,30,6);
@@ -67,18 +78,6 @@ void SpaceWidget::paintGL(){
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
-
-    GLfloat colorYellow[] = {1.f,1.f,0.f,1.f};
-
-    if ((uint64_t)m_TimeElapsed%100 <50){
-
-        glLightfv(GL_LIGHT1,GL_AMBIENT,colorYellow);
-        glLightfv(GL_LIGHT1,GL_DIFFUSE,colorYellow);
-        glLightfv(GL_LIGHT1,GL_SPECULAR,colorYellow);
-        }
-    else{
-        glDisable(GL_LIGHT1);
-    }
 
     glPushMatrix();
     generateAsteroid();

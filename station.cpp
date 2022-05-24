@@ -58,7 +58,7 @@ void Station::drawAntennas(int time) const{
 
     glPushMatrix();
     // Right Antenna
-    setMaterial(0,5,110,0,5,110,255,255,255,50);
+    setMaterial(230,0,31,230,0,31,255,255,255,50);
     glTranslatef(0.0f, 0.0f, 6.0f);
     gluCylinder(quadric,1.,1.,14.,20,20);
     glTranslatef(0.0f, 0.0f, 14.0f);
@@ -81,7 +81,6 @@ void Station::drawAntennas(int time) const{
         setMaterial(0,0,0,0,0,0,0,0,0,50);
     }
     gluDisk(quadric, 0.0, 4.0, 30, 2);
-    setMaterial(230,0,31,230,0,31,255,255,255,50);
     gluCylinder(quadric,1.,1.,14.,20,20);
 
     // Back
