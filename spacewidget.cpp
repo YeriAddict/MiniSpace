@@ -68,7 +68,7 @@ void SpaceWidget::paintGL(){
     generateAsteroid();
     starship->display();
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
-    station->display();
+    station->display(m_TimeElapsed);
     glPopMatrix();
 }
 

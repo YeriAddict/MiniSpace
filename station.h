@@ -19,7 +19,7 @@ public:
                      float alpha) const;
     void drawCenter() const;
     void drawAntennas() const;
-    void display() const;
+    void display(float time) const;
 
 private:
     GLUquadric * quadric{nullptr};

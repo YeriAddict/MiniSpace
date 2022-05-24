@@ -51,23 +51,35 @@ void Station::drawAntennas() const{
     gluQuadricDrawStyle(quadric, GLU_FILL);
 
     glPushMatrix();
-    // Top Antenna
+    // Right Antenna
     setMaterial(0,5,110,0,5,110,255,255,255,50);
     glTranslatef(0.0f, 0.0f, 6.0f);
     gluCylinder(quadric,1.,1.,14.,20,20);
     glTranslatef(0.0f, 0.0f, 14.0f);
     gluDisk(quadric, 0.0, 1.0, 30, 2);
 
-    // Bottom Antenna
+    // Left Antenna
     setMaterial(230,0,31,230,0,31,255,255,255,50);
     glTranslatef(0.0f, 0.0f, -40.0f);
     gluCylinder(quadric,1.,1.,14.,20,20);
     gluDisk(quadric, 0.0, 1.0, 30, 2);
+
+    // Middle Antenna
+    setMaterial(255,255,255,255,255,255,255,255,255,50);
+    glTranslatef(0.0f, 0.0f, 20.0f);
+    glRotated(90,0,1,0);
+    glTranslatef(0.0f,0.0f,6.0f);
+    gluCylinder(quadric,1.,1.,14.,20,20);
+    gluDisk(quadric, 0.0, 1.0, 30, 2);
+
     glPopMatrix();
 }
 
-void Station::display() const{
+void Station::display(float time) const{
+    int real_time = time;
+    float angle = real_time*(360/3.14)*3;
     glTranslatef(x_,y_,z_);
+    glRotated(angle,0.,0.,1.);
     drawCenter();
     drawAntennas();
 }
