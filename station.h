@@ -23,7 +23,7 @@ public:
 
 private:
     GLUquadric * quadric{nullptr};
-    GLuint* textures = new GLuint[1];
+    GLuint* textures = new GLuint[2];
     GLfloat x_;
     GLfloat y_;
     GLfloat z_;

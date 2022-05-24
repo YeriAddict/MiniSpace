@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>asteroid_texture.jpg</file>
         <file>logo_texture.jpg</file>
+        <file>station_texture.jpg</file>
     </qresource>
 </RCC>
