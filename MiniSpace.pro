@@ -20,6 +20,7 @@ TARGET = MiniSpace
 SOURCES += \
     asteroid.cpp \
     main.cpp \
+    menu.cpp \
     spacewidget.cpp \
     starship.cpp \
     station.cpp \
@@ -27,12 +28,14 @@ SOURCES += \
 
 HEADERS += \
     asteroid.h \
+    menu.h \
     spacewidget.h \
     starship.h \
     station.h \
     webcam.h
 
 FORMS += \
+    menu.ui \
     webcam.ui
 
 RESOURCES += \
