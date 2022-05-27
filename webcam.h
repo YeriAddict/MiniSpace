@@ -10,6 +10,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Webcam; }
 QT_END_NAMESPACE
 
+#pragma once
 class Webcam : public QWidget
 {
     Q_OBJECT

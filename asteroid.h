@@ -3,6 +3,7 @@
 #include <GL/glu.h>
 #include <QImage>
 
+#pragma once
 class Asteroid{
 
 public:

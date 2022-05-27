@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <QRandomGenerator>
 
+#pragma once
 class SpaceWidget : public QOpenGLWidget{
 public:
 
@@ -30,9 +31,9 @@ private:
     float m_TimeElapsed { 0.0f };
     QTimer m_AnimationTimer;
 
-    GLdouble eyeX = 16.0;
-    GLdouble eyeY = 8.0;
-    GLdouble eyeZ = 3.0;
+    GLdouble eyeX = -8.0;
+    GLdouble eyeY = -8.0;
+    GLdouble eyeZ = -3.0;
     GLdouble centerX = 0.0;
     GLdouble centerY = 0.0;
     GLdouble centerZ = 0.0;
