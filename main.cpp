@@ -1,4 +1,5 @@
 #include <QApplication>
+#include "game.h"
 #include "menu.h"
 #include "webcam.h"
 #include "spacewidget.h"
@@ -10,10 +11,12 @@ int main(int argc, char *argv[])
 
     //SpaceWidget spaceWidget;
     //spaceWidget.show();
-    Menu m;
-    m.show();
-    //    Webcam w;
-    //    w.show();
+    //Menu m;
+    //m.show();
+    //Webcam w;
+    //w.show();
+    Game g;
+    g.show();
 
     return app.exec();
 }

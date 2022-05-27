@@ -1,6 +1,6 @@
 #include "spacewidget.h"
 
-const unsigned int WINDOW_SIZE = 700;
+const unsigned int WINDOW_SIZE = 600;
 
 SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
