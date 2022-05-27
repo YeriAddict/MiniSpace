@@ -15,7 +15,7 @@ Menu::~Menu() {
 }
 
 void Menu::startGame(){
-    Webcam* spaceWidget = new Webcam(this);
+    game = new SpaceWidget();
+    game->show();
     this->close();
-    spaceWidget->show();
 }

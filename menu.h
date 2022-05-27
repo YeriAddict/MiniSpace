@@ -19,6 +19,7 @@ public:
 
 private:
     Ui::Menu *ui;
+    SpaceWidget* game;
 
 private slots:
     void startGame();
