@@ -7,7 +7,7 @@
 #include <QImage>
 
 #pragma once
-class Station{
+class Station {
 
 public:
     Station(GLfloat x, GLfloat y, GLfloat z, GLdouble radius);

@@ -7,7 +7,7 @@
 #include <QImage>
 
 #pragma once
-class Starship{
+class Starship {
 
 public:
     Starship(GLfloat x, GLfloat y, GLfloat z);

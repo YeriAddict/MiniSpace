@@ -2,10 +2,10 @@
 
 const unsigned int WINDOW_SIZE = 700;
 
-SpaceWidget::SpaceWidget(QWidget * parent) : QOpenGLWidget(parent){
+SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
 
-    for(int i = 0; i < 16; i++){
+    for(int i = 0; i < asteroidNumber; i++){
         randX[i] = QRandomGenerator::global()->bounded(10,300);
         randY[i] = QRandomGenerator::global()->bounded(10,300);
         randZ[i] = QRandomGenerator::global()->bounded(10,300);

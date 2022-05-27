@@ -4,7 +4,7 @@
 #include <QImage>
 
 #pragma once
-class Asteroid{
+class Asteroid {
 
 public:
     Asteroid(GLfloat x, GLfloat y, GLfloat z, GLdouble radius);

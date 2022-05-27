@@ -9,8 +9,7 @@ namespace Ui { class Menu; }
 QT_END_NAMESPACE
 
 #pragma once
-class Menu : public QWidget
-{
+class Menu : public QWidget {
     Q_OBJECT
 
 public:
@@ -22,6 +21,21 @@ private:
     SpaceWidget* game;
 
 private slots:
-    void startGame();
+    void startGameOne();
+    void startGameTwo();
+    void startGameThree();
+    void startGameFour();
+    void startGameFive();
+    void startGameSix();
+    void startGameSeven();
+    void startGameEight();
+    void startGameNine();
+    void startGameTen();
+    void startGameEleven();
+    void startGameTwelve();
+    void startGameThirteen();
+    void startGameFourteen();
+    void startGameFifteen();
+    void startGameSixteen();
 };
 #endif // MENU_H

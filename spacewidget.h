@@ -10,11 +10,11 @@
 #include <QRandomGenerator>
 
 #pragma once
-class SpaceWidget : public QOpenGLWidget{
+class SpaceWidget : public QOpenGLWidget {
+
 public:
 
-    // Constructeur
-    SpaceWidget(QWidget * parent = nullptr);
+    SpaceWidget(int asteroidNumber, QWidget * parent = nullptr);
 
 protected:
 
@@ -25,6 +25,7 @@ protected:
     void generateAsteroid();
 
 private:
+
     Starship* starship = nullptr;
     Station* station = nullptr;
 
