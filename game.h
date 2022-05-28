@@ -23,9 +23,11 @@ private:
     Ui::Game *ui;
     SpaceWidget* space;
     QTimer* timer;
+    QTimer* webcamTimer;
     QElapsedTimer startTime;
 
 private slots:
     void updateChronometer();
+    int updateWebcam();
 };
 #endif // GAME_H
