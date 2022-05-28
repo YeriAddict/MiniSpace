@@ -15,6 +15,7 @@ class SpaceWidget : public QOpenGLWidget {
 public:
 
     SpaceWidget(int asteroidNumber, QWidget * parent = nullptr);
+    ~SpaceWidget();
 
 protected:
 
@@ -22,7 +23,8 @@ protected:
     void resizeGL(int width, int height);
     void paintGL();
     void keyPressEvent(QKeyEvent * keyEvent);
-    void generateAsteroid();
+    void generateAsteroid(int asteroidNumber);
+    void deleteAsteroid(int asteroidNumber);
 
 private:
 
@@ -47,4 +49,6 @@ private:
     int randZ[16];
     int randRadius[16];
 
+    int asteroidNumber_;
+    Asteroid* asteroidTab_[16];
 };

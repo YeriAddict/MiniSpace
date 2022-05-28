@@ -5,12 +5,18 @@ const unsigned int WINDOW_SIZE = 650;
 SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
 
+    asteroidNumber_ = asteroidNumber;
+
     for(int i = 0; i < asteroidNumber; i++){
         randX[i] = QRandomGenerator::global()->bounded(10,300);
         randY[i] = QRandomGenerator::global()->bounded(10,300);
         randZ[i] = QRandomGenerator::global()->bounded(10,300);
         randRadius[i] = QRandomGenerator::global()->bounded(1,20);
     }
+
+    generateAsteroid(asteroidNumber_);
+    starship = new Starship(20,20,20);
+    station = new Station(30,30,30,6);
 
     connect(&m_AnimationTimer,  &QTimer::timeout, [&]{
         m_TimeElapsed += 1.0f;
@@ -19,6 +25,12 @@ SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(p
 
     m_AnimationTimer.setInterval(20);
     m_AnimationTimer.start();
+}
+
+SpaceWidget::~SpaceWidget() {
+    deleteAsteroid(asteroidNumber_);
+    delete starship;
+    delete station;
 }
 
 void SpaceWidget::initializeGL(){
@@ -54,9 +66,6 @@ void SpaceWidget::initializeGL(){
     else{
         glDisable(GL_LIGHT1);
     }
-
-    starship = new Starship(20,20,20);
-    station = new Station(30,30,30,6);
 }
 
 void SpaceWidget::resizeGL(int width, int height){
@@ -80,7 +89,10 @@ void SpaceWidget::paintGL(){
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
 
     glPushMatrix();
-    generateAsteroid();
+    for(int i = 0; i < asteroidNumber_; i++){
+        asteroidTab_[i]->display();
+        gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+    }
     starship->display();
     gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     station->display(m_TimeElapsed);
@@ -107,11 +119,14 @@ void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
     }
 }
 
-void SpaceWidget::generateAsteroid(){
+void SpaceWidget::generateAsteroid(int asteroidNumber){
+    for(int i = 0; i < asteroidNumber; i++){
+        asteroidTab_[i] = new Asteroid(randX[i],randY[i],randZ[i],randRadius[i]);
+    }
+}
 
-    for(int i = 0; i < 16; i++){
-        Asteroid* asteroid = new Asteroid(randX[i],randY[i],randZ[i],randRadius[i]);
-        asteroid->display();
-        gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
+void SpaceWidget::deleteAsteroid(int asteroidNumber){
+    for(int i = 0; i < asteroidNumber; i++){
+        delete(asteroidTab_[i]);
     }
 }
