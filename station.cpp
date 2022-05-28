@@ -11,6 +11,7 @@ Station::Station(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
 Station::~Station(){
     if(quadric)
         gluDeleteQuadric(quadric);
+    delete[] textures;
 }
 
 void Station::addTexture() const{
@@ -103,4 +104,5 @@ void Station::display(float time) const{
     glRotated(angle,0.,0.,1.);
     drawCenter();
     drawAntennas(time);
+    glDeleteTextures(2,textures);
 }

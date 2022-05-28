@@ -25,6 +25,7 @@ Game::Game(int asteroidNumber, QWidget *parent)
 
 Game::~Game() {
     delete ui;
+    delete space;
 }
 
 void Game::updateChronometer(){

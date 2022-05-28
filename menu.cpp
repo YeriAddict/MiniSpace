@@ -27,6 +27,7 @@ Menu::Menu(QWidget *parent)
 
 Menu::~Menu() {
     delete ui;
+    delete game;
 }
 
 void Menu::startGameOne(){

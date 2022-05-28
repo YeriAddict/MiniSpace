@@ -11,6 +11,7 @@ Asteroid::Asteroid(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
 Asteroid::~Asteroid(){
     if(quadric)
         gluDeleteQuadric(quadric);
+    delete[] textures;
 }
 
 void Asteroid::setMaterial(float R_ambient, float G_ambient, float B_ambient,
@@ -51,4 +52,5 @@ void Asteroid::drawAsteroid() const{
 void Asteroid::display() const{
     glTranslatef(x_,y_,z_);
     drawAsteroid();
+    glDeleteTextures(1,textures);
 }
