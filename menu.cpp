@@ -30,97 +30,97 @@ Menu::~Menu() {
 }
 
 void Menu::startGameOne(){
-    game = new SpaceWidget(1);
+    game = new Game(1);
     game->show();
     this->close();
 }
 
 void Menu::startGameTwo(){
-    game = new SpaceWidget(2);
+    game = new Game(2);
     game->show();
     this->close();
 }
 
 void Menu::startGameThree(){
-    game = new SpaceWidget(3);
+    game = new Game(3);
     game->show();
     this->close();
 }
 
 void Menu::startGameFour(){
-    game = new SpaceWidget(4);
+    game = new Game(4);
     game->show();
     this->close();
 }
 
 void Menu::startGameFive(){
-    game = new SpaceWidget(5);
+    game = new Game(5);
     game->show();
     this->close();
 }
 
 void Menu::startGameSix(){
-    game = new SpaceWidget(6);
+    game = new Game(6);
     game->show();
     this->close();
 }
 
 void Menu::startGameSeven(){
-    game = new SpaceWidget(7);
+    game = new Game(7);
     game->show();
     this->close();
 }
 
 void Menu::startGameEight(){
-    game = new SpaceWidget(8);
+    game = new Game(8);
     game->show();
     this->close();
 }
 
 void Menu::startGameNine(){
-    game = new SpaceWidget(9);
+    game = new Game(9);
     game->show();
     this->close();
 }
 
 void Menu::startGameTen(){
-    game = new SpaceWidget(10);
+    game = new Game(10);
     game->show();
     this->close();
 }
 
 void Menu::startGameEleven(){
-    game = new SpaceWidget(11);
+    game = new Game(11);
     game->show();
     this->close();
 }
 
 void Menu::startGameTwelve(){
-    game = new SpaceWidget(12);
+    game = new Game(12);
     game->show();
     this->close();
 }
 
 void Menu::startGameThirteen(){
-    game = new SpaceWidget(13);
+    game = new Game(13);
     game->show();
     this->close();
 }
 
 void Menu::startGameFourteen(){
-    game = new SpaceWidget(14);
+    game = new Game(14);
     game->show();
     this->close();
 }
 
 void Menu::startGameFifteen(){
-    game = new SpaceWidget(15);
+    game = new Game(15);
     game->show();
     this->close();
 }
 
 void Menu::startGameSixteen(){
-    game = new SpaceWidget(16);
+    game = new Game(16);
     game->show();
     this->close();
 }

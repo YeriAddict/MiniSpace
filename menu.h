@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include <QWidget>
-#include "spacewidget.h"
+#include "game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }
@@ -18,7 +18,7 @@ public:
 
 private:
     Ui::Menu *ui;
-    SpaceWidget* game;
+    Game* game;
 
 private slots:
     void startGameOne();

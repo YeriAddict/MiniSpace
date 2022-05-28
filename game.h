@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <QWidget>
+#include "spacewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -12,11 +13,12 @@ class Game : public QWidget {
     Q_OBJECT
 
 public:
-    Game(QWidget *parent = nullptr);
+    Game(int asteroidNumber, QWidget *parent = nullptr);
     ~Game();
 
 private:
     Ui::Game *ui;
+    SpaceWidget* space;
 
 };
 #endif // GAME_H

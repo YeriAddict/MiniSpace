@@ -11,12 +11,12 @@ int main(int argc, char *argv[])
 
     //SpaceWidget spaceWidget;
     //spaceWidget.show();
-    //Menu m;
-    //m.show();
+    Menu m;
+    m.show();
     //Webcam w;
     //w.show();
-    Game g;
-    g.show();
+    //Game g;
+    //g.show();
 
     return app.exec();
 }
