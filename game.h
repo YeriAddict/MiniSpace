@@ -2,6 +2,9 @@
 #define GAME_H
 
 #include <QWidget>
+#include <QTimer>
+#include <QTime>
+#include <QElapsedTimer>
 #include "spacewidget.h"
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +22,10 @@ public:
 private:
     Ui::Game *ui;
     SpaceWidget* space;
+    QTimer* timer;
+    QElapsedTimer startTime;
 
+private slots:
+    void updateChronometer();
 };
 #endif // GAME_H
