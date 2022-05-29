@@ -100,9 +100,11 @@ void Station::drawAntennas(int time) const{
 void Station::display(float time) const{
     int realtime = time;
     float angle = realtime*(360/3.14)*3;
+    glPushMatrix();
     glTranslatef(x_,y_,z_);
     glRotated(angle,0.,0.,1.);
     drawCenter();
     drawAntennas(time);
+    glPopMatrix();
     glDeleteTextures(2,textures);
 }

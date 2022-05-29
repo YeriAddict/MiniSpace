@@ -14,9 +14,9 @@ SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(p
         randZ[i] = QRandomGenerator::global()->bounded(-300,300);
         randRadius[i] = QRandomGenerator::global()->bounded(1,20);
     }
-    randXStation = QRandomGenerator::global()->bounded(350,400);
-    randYStation = QRandomGenerator::global()->bounded(350,400);
-    randZStation = QRandomGenerator::global()->bounded(350,400);
+    randXStation = QRandomGenerator::global()->bounded(10,200);
+    randYStation = QRandomGenerator::global()->bounded(10,200);
+    randZStation = QRandomGenerator::global()->bounded(10,200);
 
     starship = new Starship(0,0,0,0,0);
     generateAsteroid(asteroidNumber_);
@@ -103,7 +103,11 @@ void SpaceWidget::paintGL(){
     for(int i = 0; i < asteroidNumber_; i++){
         asteroidTab_[i]->display();
     }
+    glPopMatrix();
+    glPushMatrix();
     starship->display();
+    glPopMatrix();
+    glPushMatrix();
     station->display(m_TimeElapsed);
     glPopMatrix();
 }
@@ -112,19 +116,31 @@ void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
 {
     if(keyEvent->key() == Qt::Key_Q)
     {
-        eyeX -= 0.6;
+        //starship->setX(starship->getX() - 3);
+        starship->setPhi(starship->getPhi() + 2);
     }
     if(keyEvent->key() == Qt::Key_D)
     {
-        eyeX += 0.6;
+        //starship->setX(starship->getX() + 3);
+        starship->setPhi(starship->getPhi() - 2);
     }
     if(keyEvent->key() == Qt::Key_S)
     {
-        eyeZ -= 0.6;
+        //starship->setY(starship->getY() + 3);
+        starship->setTheta(starship->getTheta() - 2);
     }
     if(keyEvent->key() == Qt::Key_Z)
     {
-        eyeZ += 0.6;
+        //starship->setY(starship->getY() - 3);
+        starship->setTheta(starship->getTheta() + 2);
+    }
+    if(keyEvent->key() == Qt::Key_E)
+    {
+        starship->setZ(starship->getZ() - 5);
+    }
+    if(keyEvent->key() == Qt::Key_R)
+    {
+        starship->setZ(starship->getZ() + 5);
     }
 }
 
