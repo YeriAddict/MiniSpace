@@ -13,6 +13,12 @@ public:
     Starship(float x, float y, float z);
     ~Starship();
 
+    float getX();
+    float getY();
+    float getZ();
+    void setX(float x);
+    void setY(float y);
+    void setZ(float z);
     void setMaterial(float R_ambient, float G_ambient, float B_ambient,
                      float R_diffuse, float G_diffuse, float B_diffuse,
                      float R_specular, float G_specular, float B_specular,

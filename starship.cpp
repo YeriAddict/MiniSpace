@@ -12,6 +12,30 @@ Starship::~Starship(){
         gluDeleteQuadric(quadric);
 }
 
+float Starship::getX(){
+    return x_;
+}
+
+float Starship::getY(){
+    return y_;
+}
+
+float Starship::getZ(){
+    return z_;
+}
+
+void Starship::setX(float x){
+    x_ = x;
+}
+
+void Starship::setY(float y){
+    y_ = y;
+}
+
+void Starship::setZ(float z){
+    z_ = z;
+}
+
 void Starship::setMaterial(float R_ambient, float G_ambient, float B_ambient,
                            float R_diffuse, float G_diffuse, float B_diffuse,
                            float R_specular, float G_specular, float B_specular,
