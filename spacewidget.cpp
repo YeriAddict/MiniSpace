@@ -71,6 +71,13 @@ void SpaceWidget::initializeGL(){
     else{
         glDisable(GL_LIGHT1);
     }
+
+    glEnable(GL_LIGHT2);
+    GLfloat light_tab_starship[] = { starship->getX(), starship->getY(), starship->getZ(), 1.f};
+    GLfloat direction_tab_starship[] = { 0.0, 0.0, 1.0};
+    glLightfv(GL_LIGHT2,GL_POSITION,light_tab_starship);
+    glLightfv(GL_LIGHT2,GL_SPOT_DIRECTION,direction_tab_starship);
+    glLightf(GL_LIGHT2,GL_SPOT_CUTOFF,5);
 }
 
 void SpaceWidget::resizeGL(int width, int height){

@@ -33,8 +33,8 @@ void Game::updateChronometer(){
 }
 
 int Game::updateWebcam(){
-    VideoCapture cap(0); // open the default camera
-    if(!cap.isOpened())  // check if we succeeded
+    VideoCapture cap(0);
+    if(!cap.isOpened())
     {
         return -1;
     }
