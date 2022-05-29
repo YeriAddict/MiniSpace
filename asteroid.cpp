@@ -1,6 +1,6 @@
 #include "asteroid.h"
 
-Asteroid::Asteroid(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
+Asteroid::Asteroid(float x, float y, float z, double radius){
     quadric = gluNewQuadric();
     x_ = x;
     y_ = y;

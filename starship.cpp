@@ -1,6 +1,6 @@
 #include "starship.h"
 
-Starship::Starship(GLfloat x, GLfloat y, GLfloat z){
+Starship::Starship(float x, float y, float z){
     quadric = gluNewQuadric();
     x_ = x;
     y_ = y;

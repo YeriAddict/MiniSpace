@@ -7,7 +7,7 @@
 class Asteroid {
 
 public:
-    Asteroid(GLfloat x, GLfloat y, GLfloat z, GLdouble radius);
+    Asteroid(float x, float y, float z, double radius);
     ~Asteroid();
 
     void setMaterial(float R_ambient, float G_ambient, float B_ambient,
@@ -21,8 +21,8 @@ public:
 private:
     GLUquadric * quadric{nullptr};
     GLuint* textures = new GLuint[1];
-    GLfloat x_;
-    GLfloat y_;
-    GLfloat z_;
-    GLdouble radius_;
+    float x_;
+    float y_;
+    float z_;
+    double radius_;
 };

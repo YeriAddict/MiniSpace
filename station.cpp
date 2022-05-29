@@ -1,6 +1,6 @@
 #include "station.h"
 
-Station::Station(GLfloat x, GLfloat y, GLfloat z, GLdouble radius){
+Station::Station(float x, float y, float z, double radius){
     quadric = gluNewQuadric();
     x_ = x;
     y_ = y;
