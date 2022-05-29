@@ -8,6 +8,7 @@
 #include <cmath>
 #include <algorithm>
 #include <QRandomGenerator>
+#include <QMessageBox>
 
 #pragma once
 class SpaceWidget : public QOpenGLWidget {
@@ -23,6 +24,7 @@ protected:
     void keyPressEvent(QKeyEvent * keyEvent);
     void generateAsteroid(int asteroidNumber);
     void deleteAsteroid(int asteroidNumber);
+    void collisionDetection(int asteroidNumber);
 
 private:
     Starship* starship = nullptr;

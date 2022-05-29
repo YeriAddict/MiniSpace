@@ -99,6 +99,7 @@ void SpaceWidget::paintGL(){
               0,
               cos(starship->getTheta()*PI/180),
               0);
+    collisionDetection(asteroidNumber_);
     glPushMatrix();
     for(int i = 0; i < asteroidNumber_; i++){
         asteroidTab_[i]->display();
@@ -164,5 +165,29 @@ void SpaceWidget::generateAsteroid(int asteroidNumber){
 void SpaceWidget::deleteAsteroid(int asteroidNumber){
     for(int i = 0; i < asteroidNumber; i++){
         delete(asteroidTab_[i]);
+    }
+}
+
+void SpaceWidget::collisionDetection(int asteroidNumber){
+    int distance;
+    for(int i = 0; i < asteroidNumber; i++){
+        distance = sqrt((randX[i]-starship->getX())*(randX[i]-starship->getX())+
+                        (randY[i]-starship->getY())*(randY[i]-starship->getY())+
+                        (randZ[i]-starship->getZ())*(randZ[i]-starship->getZ()));
+        if(distance < randRadius[i] + 18){
+            qDebug() << "Partie perdue";
+            QMessageBox message;
+            message.setText("Partie perdue");
+            message.exec();
+        }
+    }
+    distance = sqrt((randXStation-starship->getX())*(randXStation-starship->getX())+
+                    (randYStation-starship->getY())*(randYStation-starship->getY())+
+                    (randZStation-starship->getZ())*(randZStation-starship->getZ()));
+    if(distance < 6 + 18){
+        qDebug() << "Partie gagnée";
+        QMessageBox message;
+        message.setText("Partie gagnée");
+        message.exec();
     }
 }
