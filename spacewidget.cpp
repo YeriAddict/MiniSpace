@@ -112,35 +112,46 @@ void SpaceWidget::paintGL(){
     glPopMatrix();
 }
 
-void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent)
-{
-    if(keyEvent->key() == Qt::Key_Q)
+void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent){
+    float r;
+
+    if(keyEvent->key() == Qt::Key_Up)
     {
-        //starship->setX(starship->getX() - 3);
-        starship->setPhi(starship->getPhi() + 2);
+        starship->setTheta(starship->getTheta() + 2);
     }
-    if(keyEvent->key() == Qt::Key_D)
+    if(keyEvent->key() == Qt::Key_Down)
     {
-        //starship->setX(starship->getX() + 3);
+        starship->setTheta(starship->getTheta() - 2);
+    }
+    if(keyEvent->key() == Qt::Key_Right)
+    {
         starship->setPhi(starship->getPhi() - 2);
+    }
+    if(keyEvent->key() == Qt::Key_Left)
+    {
+        starship->setPhi(starship->getPhi() + 2);
     }
     if(keyEvent->key() == Qt::Key_S)
     {
-        //starship->setY(starship->getY() + 3);
-        starship->setTheta(starship->getTheta() - 2);
+        r = 5;
+        starship->setX(starship->getX() + r*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180));
+        starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
+        starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
     }
     if(keyEvent->key() == Qt::Key_Z)
     {
-        //starship->setY(starship->getY() - 3);
-        starship->setTheta(starship->getTheta() + 2);
+        r = -5;
+        starship->setX(starship->getX() + r*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180));
+        starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
+        starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
     }
-    if(keyEvent->key() == Qt::Key_E)
-    {
-        starship->setZ(starship->getZ() - 5);
+
+    if (starship->getTheta() == 360 || starship->getTheta() == -360){
+        starship->setTheta(0);
     }
-    if(keyEvent->key() == Qt::Key_R)
-    {
-        starship->setZ(starship->getZ() + 5);
+
+    if (starship->getPhi() == 360 || starship->getPhi() == -360){
+        starship->setPhi(0);
     }
 }
 
