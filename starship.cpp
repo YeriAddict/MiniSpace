@@ -1,39 +1,17 @@
 #include "starship.h"
 
-Starship::Starship(float x, float y, float z){
+Starship::Starship(float x, float y, float z, float theta, float phi){
     quadric = gluNewQuadric();
     x_ = x;
     y_ = y;
     z_ = z;
+    theta_ = theta;
+    phi_ = phi;
 }
 
 Starship::~Starship(){
     if(quadric)
         gluDeleteQuadric(quadric);
-}
-
-float Starship::getX(){
-    return x_;
-}
-
-float Starship::getY(){
-    return y_;
-}
-
-float Starship::getZ(){
-    return z_;
-}
-
-void Starship::setX(float x){
-    x_ = x;
-}
-
-void Starship::setY(float y){
-    y_ = y;
-}
-
-void Starship::setZ(float z){
-    z_ = z;
 }
 
 void Starship::setMaterial(float R_ambient, float G_ambient, float B_ambient,
