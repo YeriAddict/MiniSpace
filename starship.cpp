@@ -94,6 +94,7 @@ void Starship::drawHead() const{
 
 void Starship::display() const{
     glTranslatef(x_,y_,z_);
+    glRotated(180,1.,0.,0.);
     drawBody();
     drawDisks();
     drawSides();

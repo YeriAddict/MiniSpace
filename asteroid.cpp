@@ -46,11 +46,12 @@ void Asteroid::drawAsteroid() const{
     setMaterial(255,255,255,255,255,255,255,255,255,50);
     gluSphere(quadric,radius_,20,20);
     glDisable(GL_TEXTURE_2D);
-    glLoadIdentity();
 }
 
 void Asteroid::display() const{
+    glPushMatrix();
     glTranslatef(x_,y_,z_);
     drawAsteroid();
+    glPopMatrix();
     glDeleteTextures(1,textures);
 }

@@ -1,6 +1,7 @@
 #include "spacewidget.h"
 
 const unsigned int WINDOW_SIZE = 650;
+const float PI = 3.14159265359;
 
 SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
@@ -8,16 +9,16 @@ SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(p
     asteroidNumber_ = asteroidNumber;
 
     for(int i = 0; i < asteroidNumber; i++){
-        randX[i] = QRandomGenerator::global()->bounded(10,300);
-        randY[i] = QRandomGenerator::global()->bounded(10,300);
-        randZ[i] = QRandomGenerator::global()->bounded(10,300);
+        randX[i] = QRandomGenerator::global()->bounded(-300,300);
+        randY[i] = QRandomGenerator::global()->bounded(-300,300);
+        randZ[i] = QRandomGenerator::global()->bounded(-300,300);
         randRadius[i] = QRandomGenerator::global()->bounded(1,20);
     }
     randXStation = QRandomGenerator::global()->bounded(350,400);
     randYStation = QRandomGenerator::global()->bounded(350,400);
     randZStation = QRandomGenerator::global()->bounded(350,400);
 
-    starship = new Starship(0,0,0);
+    starship = new Starship(0,0,0,0,0);
     generateAsteroid(asteroidNumber_);
     station = new Station(randXStation,randYStation,randZStation,6);
 
@@ -88,16 +89,21 @@ void SpaceWidget::paintGL(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
-
+    glLoadIdentity();  
+    gluLookAt(starship->getX()+5*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180),
+              3 + starship->getY()+5*sin(starship->getTheta()*PI/180),
+              starship->getZ()+5*cos(starship->getPhi()*PI/180)*cos(starship->getTheta()*PI/180),
+              starship->getX(),
+              starship->getY(),
+              starship->getZ(),
+              0,
+              cos(starship->getTheta()*PI/180),
+              0);
     glPushMatrix();
     for(int i = 0; i < asteroidNumber_; i++){
         asteroidTab_[i]->display();
-        gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     }
     starship->display();
-    gluLookAt(eyeX,eyeY,eyeZ,centerX,centerY,centerZ,upX,upY,upZ);
     station->display(m_TimeElapsed);
     glPopMatrix();
 }
