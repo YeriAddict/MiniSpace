@@ -178,7 +178,9 @@ void SpaceWidget::collisionDetection(int asteroidNumber){
         if(distance < randRadius[i] + 18 && end_ == true){
             qDebug() << "Partie perdue";
             end_ = false;
-            result = new Result("Partie perdue", "00:00:00");
+            QTime currentTime = QTime::currentTime();
+            int elapsedTime = startTime.msecsTo(currentTime);
+            result = new Result("Partie perdue", QTime(0,0).addMSecs(elapsedTime).toString("mm:ss:z"));
             result->show();
         }
     }
@@ -188,7 +190,9 @@ void SpaceWidget::collisionDetection(int asteroidNumber){
     if(distance < 6 + 18 && end_ == true){
         qDebug() << "Partie gagnée";
         end_ = false;
-        result = new Result("Partie gagnée", "00:00:00");
+        QTime currentTime = QTime::currentTime();
+        int elapsedTime = startTime.msecsTo(currentTime);
+        result = new Result("Partie gagnée", QTime(0,0).addMSecs(elapsedTime).toString("mm:ss:z"));
         result->show();
     }
 }

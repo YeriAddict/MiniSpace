@@ -5,6 +5,7 @@
 #include <QOpenGLWidget>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QTime>
 #include <QApplication>
 #include <cmath>
 #include <algorithm>
@@ -47,5 +48,5 @@ private:
     QTimer m_AnimationTimer;
 
     Result* result;
-
+    QTime startTime = QTime::currentTime();
 };
