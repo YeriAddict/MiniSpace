@@ -22,6 +22,7 @@ SOURCES += \
     game.cpp \
     main.cpp \
     menu.cpp \
+    result.cpp \
     spacewidget.cpp \
     starship.cpp \
     station.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     asteroid.h \
     game.h \
     menu.h \
+    result.h \
     spacewidget.h \
     starship.h \
     station.h \
@@ -39,6 +41,7 @@ HEADERS += \
 FORMS += \
     game.ui \
     menu.ui \
+    result.ui \
     webcam.ui
 
 RESOURCES += \

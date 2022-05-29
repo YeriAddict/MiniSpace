@@ -35,6 +35,7 @@ SpaceWidget::~SpaceWidget() {
     deleteAsteroid(asteroidNumber_);
     delete starship;
     delete station;
+    delete result;
 }
 
 void SpaceWidget::initializeGL(){
@@ -174,20 +175,20 @@ void SpaceWidget::collisionDetection(int asteroidNumber){
         distance = sqrt((randX[i]-starship->getX())*(randX[i]-starship->getX())+
                         (randY[i]-starship->getY())*(randY[i]-starship->getY())+
                         (randZ[i]-starship->getZ())*(randZ[i]-starship->getZ()));
-        if(distance < randRadius[i] + 18){
+        if(distance < randRadius[i] + 18 && end_ == true){
             qDebug() << "Partie perdue";
-            QMessageBox message;
-            message.setText("Partie perdue");
-            message.exec();
+            end_ = false;
+            result = new Result("Partie perdue", "00:00:00");
+            result->show();
         }
     }
     distance = sqrt((randXStation-starship->getX())*(randXStation-starship->getX())+
                     (randYStation-starship->getY())*(randYStation-starship->getY())+
                     (randZStation-starship->getZ())*(randZStation-starship->getZ()));
-    if(distance < 6 + 18){
+    if(distance < 6 + 18 && end_ == true){
         qDebug() << "Partie gagnée";
-        QMessageBox message;
-        message.setText("Partie gagnée");
-        message.exec();
+        end_ = false;
+        result = new Result("Partie gagnée", "00:00:00");
+        result->show();
     }
 }
