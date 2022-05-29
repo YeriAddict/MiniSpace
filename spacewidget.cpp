@@ -13,10 +13,13 @@ SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(p
         randZ[i] = QRandomGenerator::global()->bounded(10,300);
         randRadius[i] = QRandomGenerator::global()->bounded(1,20);
     }
+    randXStation = QRandomGenerator::global()->bounded(350,400);
+    randYStation = QRandomGenerator::global()->bounded(350,400);
+    randZStation = QRandomGenerator::global()->bounded(350,400);
 
+    starship = new Starship(0,0,0);
     generateAsteroid(asteroidNumber_);
-    starship = new Starship(20,20,20);
-    station = new Station(30,30,30,6);
+    station = new Station(randXStation,randYStation,randZStation,6);
 
     connect(&m_AnimationTimer,  &QTimer::timeout, [&]{
         m_TimeElapsed += 1.0f;
