@@ -35,7 +35,6 @@ public:
 
 private:
     GLUquadric * quadric{nullptr};
-    GLuint* textures = new GLuint[1];
     float x_;
     float y_;
     float z_;
