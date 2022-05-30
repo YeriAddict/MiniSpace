@@ -10,8 +10,8 @@ namespace Ui { class Webcam; }
 QT_END_NAMESPACE
 
 struct Coordinates {
-  int x;
-  int y;
+    int x;
+    int y;
 };
 
 #pragma once

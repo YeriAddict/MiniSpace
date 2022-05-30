@@ -31,9 +31,9 @@ void Station::addTexture() const{
 }
 
 void Station::setMaterial(float R_ambient, float G_ambient, float B_ambient,
-                           float R_diffuse, float G_diffuse, float B_diffuse,
-                           float R_specular, float G_specular, float B_specular,
-                           float alpha) const{
+                          float R_diffuse, float G_diffuse, float B_diffuse,
+                          float R_specular, float G_specular, float B_specular,
+                          float alpha) const{
     GLfloat ambient_tab[] = { R_ambient/(1.f*255), G_ambient/(1.f*255), B_ambient/(1.f*255), alpha};
     GLfloat diffuse_tab[] = { R_diffuse/(1.f*255), G_diffuse/(1.f*255), B_diffuse/(1.f*255), alpha};
     GLfloat specular_tab[] = { R_specular/(1.f*255), G_specular/(1.f*255), B_specular/(1.f*255), alpha};

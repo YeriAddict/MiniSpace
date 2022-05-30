@@ -59,22 +59,22 @@ void Starship::drawSides() const{
     setMaterial(230,0,31,230,0,31,255,255,255,50);
     glBegin(GL_TRIANGLES);
 
-        // Right
+    // Right
     glVertex3f(2.f, 0.f, 0.f);
     glVertex3f(2.f, 0.f, 2.f);
     glVertex3f(5.f, 0.f, 0.f);
 
-        // Left
+    // Left
     glVertex3f(-2.f, 0.f, 0.f);
     glVertex3f(-2.f, 0.f, 2.f);
     glVertex3f(-5.f, 0.f, 0.f);
 
-        // Top
+    // Top
     glVertex3f(0.f, 2.f, 0.f);
     glVertex3f(0.f, 2.f, 2.f);
     glVertex3f(0.f, 5.f, 0.f);
 
-        // Bottom
+    // Bottom
     glVertex3f(0.f, -2.f, 0.f);
     glVertex3f(0.f, -2.f, 2.f);
     glVertex3f(0.f, -5.f, 0.f);

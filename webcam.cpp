@@ -4,7 +4,7 @@
 using namespace cv;
 
 Webcam::Webcam(QWidget *parent) : QWidget(parent)
-    , ui(new Ui::Webcam)
+  , ui(new Ui::Webcam)
 {
     ui->setupUi(this);
     webcamTimer = new QTimer(this);
@@ -12,8 +12,7 @@ Webcam::Webcam(QWidget *parent) : QWidget(parent)
     webcamTimer->start(100);
 }
 
-Webcam::~Webcam()
-{
+Webcam::~Webcam(){
     delete ui;
 }
 
@@ -44,8 +43,6 @@ int Webcam::updateWebcam(){
         cv::flip(frame,frame,1);
         cv::cvtColor(frame,frame_gray,COLOR_BGR2GRAY);
         palm.detectMultiScale( frame_gray, vecPalm, 1.1, 4, 0|CASCADE_SCALE_IMAGE, Size(60, 60) );
-        // Mode : Idle
-//        webcamDetector_=0;
         if (vecPalm.size()>0)
         {
             for (int i=0;i<(int)vecPalm.size();i++){
@@ -78,13 +75,13 @@ int Webcam::updateWebcam(){
                 leftPoint = fistPositions[1];
                 rightPoint = fistPositions[0];
             }
-            if(leftPoint.y > rightPoint.y){
+            if(leftPoint.y < rightPoint.y){
                 // Mode : Turn left
-                webcamDetector_ = 4000;
+                webcamDetector_ = 5000;
             }
             else{
                 // Mode : Turn right
-                webcamDetector_ = 5000;
+                webcamDetector_ = 4000;
             }
             if((leftPoint.y>300)&&(rightPoint.y>300)){
                 // Mode : Turn down

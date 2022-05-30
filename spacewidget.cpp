@@ -40,9 +40,8 @@ SpaceWidget::~SpaceWidget() {
 }
 
 void SpaceWidget::initializeGL(){
-    glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
+    glClearColor(0.f, 0.f, 0.f, 0.0f);
     glEnable(GL_DEPTH_TEST);
-
     glEnable(GL_LIGHTING);
 
     glEnable(GL_LIGHT0);
@@ -64,11 +63,10 @@ void SpaceWidget::initializeGL(){
     glLightf(GL_LIGHT1,GL_SPOT_CUTOFF,5);
 
     if ((uint64_t)m_TimeElapsed%100 <50){
-
         glLightfv(GL_LIGHT1,GL_AMBIENT,yellow_tab);
         glLightfv(GL_LIGHT1,GL_DIFFUSE,yellow_tab);
         glLightfv(GL_LIGHT1,GL_SPECULAR,yellow_tab);
-        }
+    }
     else{
         glDisable(GL_LIGHT1);
     }
@@ -83,12 +81,11 @@ void SpaceWidget::initializeGL(){
 
 void SpaceWidget::resizeGL(int width, int height){
     glViewport(0, 0, width, height);
-
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
     if(width != 0)
-       glFrustum(-5, 5, -5, 5, 2, 2000);
+        glFrustum(-5, 5, -5, 5, 2, 2000);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -96,9 +93,8 @@ void SpaceWidget::resizeGL(int width, int height){
 
 void SpaceWidget::paintGL(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();  
+    glLoadIdentity();
     gluLookAt(starship->getX()+5*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180),
               3 + starship->getY()+5*sin(starship->getTheta()*PI/180),
               starship->getZ()+5*cos(starship->getPhi()*PI/180)*cos(starship->getTheta()*PI/180),

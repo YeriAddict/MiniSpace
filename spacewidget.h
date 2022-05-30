@@ -9,7 +9,6 @@
 #include <QTime>
 #include <QApplication>
 #include <QRandomGenerator>
-#include <QMessageBox>
 #include <cmath>
 #include <algorithm>
 
