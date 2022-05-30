@@ -9,6 +9,11 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Webcam; }
 QT_END_NAMESPACE
 
+struct Coordinates {
+  int x;
+  int y;
+};
+
 #pragma once
 class Webcam : public QWidget {
     Q_OBJECT
@@ -22,7 +27,8 @@ public:
 private:
     Ui::Webcam *ui;
     QTimer* webcamTimer;
-
+    std::vector<Coordinates> palmPositions;
+    std::vector<Coordinates> fistPositions;
 
 private slots:
     int updateWebcam();

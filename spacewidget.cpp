@@ -179,7 +179,7 @@ void SpaceWidget::moveWithWebcam(){
     // Move forward
     if(Webcam::webcamDetector_ == 1000)
     {
-        r = -5;
+        r = -2;
         starship->setX(starship->getX() + r*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180));
         starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
         starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
@@ -187,22 +187,22 @@ void SpaceWidget::moveWithWebcam(){
     // Turn up
     if(Webcam::webcamDetector_ == 2000)
     {
-        starship->setTheta(starship->getTheta() + 2);
+        starship->setTheta(starship->getTheta() + 1);
     }
     // Turn down
     if(Webcam::webcamDetector_ == 3000)
     {
-        starship->setTheta(starship->getTheta() - 2);
+        starship->setTheta(starship->getTheta() - 1);
     }
     // Turn right
     if(Webcam::webcamDetector_ == 4000)
     {
-        starship->setPhi(starship->getPhi() - 2);
+        starship->setPhi(starship->getPhi() - 1);
     }
     // Turn left
     if(Webcam::webcamDetector_ == 5000)
     {
-        starship->setPhi(starship->getPhi() + 2);
+        starship->setPhi(starship->getPhi() + 1);
     }
 
     if (starship->getTheta() == 360 || starship->getTheta() == -360){
