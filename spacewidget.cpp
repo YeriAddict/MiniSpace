@@ -2,6 +2,7 @@
 
 const unsigned int WINDOW_SIZE = 650;
 const float PI = 3.14159265359;
+int Webcam::webcamDetector_ = 0;
 
 SpaceWidget::SpaceWidget(int asteroidNumber, QWidget * parent) : QOpenGLWidget(parent){
     setFixedSize(WINDOW_SIZE, WINDOW_SIZE);
@@ -119,27 +120,34 @@ void SpaceWidget::paintGL(){
     glPushMatrix();
     station->display(m_TimeElapsed);
     glPopMatrix();
+    qDebug() << Webcam::webcamDetector_;
+    moveWithWebcam();
 }
 
 void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent){
     float r;
 
+    // Turn up
     if(keyEvent->key() == Qt::Key_Up)
     {
         starship->setTheta(starship->getTheta() + 2);
     }
+    // Turn down
     if(keyEvent->key() == Qt::Key_Down)
     {
         starship->setTheta(starship->getTheta() - 2);
     }
+    // Turn right
     if(keyEvent->key() == Qt::Key_Right)
     {
         starship->setPhi(starship->getPhi() - 2);
     }
+    // Turn left
     if(keyEvent->key() == Qt::Key_Left)
     {
         starship->setPhi(starship->getPhi() + 2);
     }
+    // Move backward
     if(keyEvent->key() == Qt::Key_S)
     {
         r = 5;
@@ -147,12 +155,54 @@ void SpaceWidget::keyPressEvent(QKeyEvent * keyEvent){
         starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
         starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
     }
+    // Move forward
     if(keyEvent->key() == Qt::Key_Z)
     {
         r = -5;
         starship->setX(starship->getX() + r*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180));
         starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
         starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
+    }
+
+    if (starship->getTheta() == 360 || starship->getTheta() == -360){
+        starship->setTheta(0);
+    }
+
+    if (starship->getPhi() == 360 || starship->getPhi() == -360){
+        starship->setPhi(0);
+    }
+}
+
+void SpaceWidget::moveWithWebcam(){
+    float r;
+
+    // Move forward
+    if(Webcam::webcamDetector_ == 1000)
+    {
+        r = -5;
+        starship->setX(starship->getX() + r*cos(starship->getTheta()*PI/180)*sin(starship->getPhi()*PI/180));
+        starship->setZ(starship->getZ() + r*cos(starship->getTheta()*PI/180)*cos(starship->getPhi()*PI/180));
+        starship->setY(starship->getY() + r*sin(starship->getTheta()*PI/180));
+    }
+    // Turn up
+    if(Webcam::webcamDetector_ == 2000)
+    {
+        starship->setTheta(starship->getTheta() + 2);
+    }
+    // Turn down
+    if(Webcam::webcamDetector_ == 3000)
+    {
+        starship->setTheta(starship->getTheta() - 2);
+    }
+    // Turn right
+    if(Webcam::webcamDetector_ == 4000)
+    {
+        starship->setPhi(starship->getPhi() - 2);
+    }
+    // Turn left
+    if(Webcam::webcamDetector_ == 5000)
+    {
+        starship->setPhi(starship->getPhi() + 2);
     }
 
     if (starship->getTheta() == 360 || starship->getTheta() == -360){

@@ -2,6 +2,7 @@
 #include "starship.h"
 #include "station.h"
 #include "result.h"
+#include "webcam.h"
 #include <QOpenGLWidget>
 #include <QKeyEvent>
 #include <QTimer>
@@ -24,6 +25,7 @@ protected:
     void resizeGL(int width, int height);
     void paintGL();
     void keyPressEvent(QKeyEvent * keyEvent);
+    void moveWithWebcam();
     void generateAsteroid(int asteroidNumber);
     void deleteAsteroid(int asteroidNumber);
     void collisionDetection(int asteroidNumber);

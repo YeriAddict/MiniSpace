@@ -17,9 +17,12 @@ public:
     explicit Webcam(QWidget *parent = nullptr);
     ~Webcam();
 
+    static int webcamDetector_;
+
 private:
     Ui::Webcam *ui;
     QTimer* webcamTimer;
+
 
 private slots:
     int updateWebcam();
