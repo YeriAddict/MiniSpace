@@ -17,20 +17,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="webcamLabel">
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Webcam</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
+      <widget class="Webcam" name="webcamWidget" native="true"/>
      </item>
      <item>
       <widget class="QLabel" name="timeLabel">
@@ -52,6 +39,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Webcam</class>
+   <extends>QWidget</extends>
+   <header>webcam.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

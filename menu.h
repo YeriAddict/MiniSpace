@@ -1,8 +1,8 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <QWidget>
 #include "game.h"
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Menu; }

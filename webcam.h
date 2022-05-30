@@ -3,7 +3,6 @@
 
 #include "opencv2/opencv.hpp"
 #include <QWidget>
-#include <QString>
 #include <QTimer>
 
 QT_BEGIN_NAMESPACE
@@ -20,11 +19,10 @@ public:
 
 private:
     Ui::Webcam *ui;
-    cv::VideoCapture * webCam_;
+    QTimer* webcamTimer;
 
 private slots:
-    void updateFrame();
-    void on_captureButton_clicked();
+    int updateWebcam();
 };
 
 #endif // WEBCAM_H

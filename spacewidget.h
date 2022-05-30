@@ -7,10 +7,10 @@
 #include <QTimer>
 #include <QTime>
 #include <QApplication>
-#include <cmath>
-#include <algorithm>
 #include <QRandomGenerator>
 #include <QMessageBox>
+#include <cmath>
+#include <algorithm>
 
 #pragma once
 class SpaceWidget : public QOpenGLWidget {
