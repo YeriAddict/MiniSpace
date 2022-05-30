@@ -55,7 +55,7 @@ void SpaceWidget::initializeGL(){
     glLightfv(GL_LIGHT0, GL_POSITION, light_tab);
 
     glEnable(GL_LIGHT1);
-    GLfloat light_tab_station[] = { 30.f, 30.f, 30.f, 1.f};
+    GLfloat light_tab_station[] = { station->getX(), station->getY(), station->getZ(), 1.f};
     GLfloat direction_tab_station[] = { 0.0, 0.0, 1.0};
     GLfloat yellow_tab[] = {1.f,1.f,0.f,1.f};
     glLightfv(GL_LIGHT1,GL_POSITION,light_tab_station);

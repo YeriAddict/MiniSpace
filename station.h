@@ -13,6 +13,12 @@ public:
     Station(float x, float y, float z, double radius);
     ~Station();
 
+    float getX(){return x_;};
+    float getY(){return y_;};
+    float getZ(){return z_;};
+    void setX(float x){x_ = x;};
+    void setY(float y){y_ = y;};
+    void setZ(float z){z_ = z;};
     void addTexture() const;
     void setMaterial(float R_ambient, float G_ambient, float B_ambient,
                      float R_diffuse, float G_diffuse, float B_diffuse,
